@@ -4,24 +4,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:FTPManager.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:cv="clr-namespace:FTPManager.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1280"
          WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent"
         >
+    <Window.Resources>
+        <ResourceDictionary>
+            <cv:BooleanToVisibilityConverter x:Key="boolToVis"/>
+        </ResourceDictionary>
+    </Window.Resources>
     <Border CornerRadius="25" Background="WhiteSmoke" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <StackPanel Orientation="Vertical" Margin="0 10 0 0">
+                <StackPanel Margin="0 10 0 0">
                     <uc:Menubutton Icon="Menu" />
                     <uc:Menubutton Icon="ToolboxOutline" />
                     <uc:Menubutton Icon="CogOutline" />
                 </StackPanel>
             </StackPanel>
             <uc:Menubutton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 20"/>
+            <Grid Grid.Column="1" Margin="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Host" Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1"
+                               IsHitTestVisible="False" Visibility="{Binding ElementName=hostTextBox,Path=Text.IsEmpty,Converter={StaticResource boolToVis}}"/>
+                        <TextBox x:Name="hostTextBox"/>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20 0 0 0">
+                    <Icon:PackIconMaterial Kind="LoginVariant"/>
+                </StackPanel>
+            </Grid>
         </Grid>
 
     </Border>
