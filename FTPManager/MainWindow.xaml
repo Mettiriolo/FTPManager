@@ -1,0 +1,28 @@
+﻿<Window x:Class="FTPManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:FTPManager.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1280"
+         WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent"
+        >
+    <Border CornerRadius="25" Background="WhiteSmoke" MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 0">
+                    <uc:Menubutton Icon="Menu" />
+                    <uc:Menubutton Icon="ToolboxOutline" />
+                    <uc:Menubutton Icon="CogOutline" />
+                </StackPanel>
+            </StackPanel>
+            <uc:Menubutton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 20"/>
+        </Grid>
+
+    </Border>
+</Window>
